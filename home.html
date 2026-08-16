@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offres- الرئيسية</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #7986e0;
+    --primary-dark: #5f6ed1;
+    --primary-light: #eceefa;
+    --text-dark: #1e1e2d;
+    --text-gray: #6b7280;
+    --border: #e5e7eb;
+    --danger: #e0475a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    color: var(--text-dark);
+    background: #fff;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ---------------- Header ---------------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-dark);
+  }
+
+  .logo i { color: var(--primary); font-size: 24px; }
+
+  nav ul {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  nav ul li a.active {
+    color: var(--primary);
+    font-weight: 700;
+    padding-bottom: 22px;
+    border-bottom: 2px solid var(--primary);
+  }
+
+  nav ul li a:hover { color: var(--primary); }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .lang-select {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .icon-btn {
+    position: relative;
+    font-size: 20px;
+    color: #444;
+  }
+
+  .icon-btn .badge {
+    position: absolute;
+    top: -6px;
+    left: -8px;
+    background: var(--danger);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-light);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
+
+  .user-chip i { font-size: 18px; }
+
+  .logout-icon {
+    font-size: 18px;
+    color: var(--text-gray);
+    transition: color 0.2s;
+  }
+  .logout-icon:hover { color: var(--danger); }
+
+  .login-btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .login-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 18px rgba(121,134,224,0.35);
+  }
+
+  /* ---------------- Hero ---------------- */
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 40px 40px;
+  }
+
+  .hero-visual {
+    flex: 1;
+    position: relative;
+    min-height: 180px;
+  }
+
+  .hero-visual .map-img {
+    width: 103%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .floating-icon {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+  .fi-tag { top: 10%; left: 2%; color: var(--danger); }
+  .fi-cutlery { bottom: 22%; left: -2%; color: #2fa86b; }
+  .fi-coffee { top: 4%; right: 22%; color: #b06a2e; }
+  .fi-bag { top: 42%; right: 5%; color: #d99a2e; }
+
+  .pin-icon {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    font-size: 38px;
+    color: var(--primary);
+    filter: drop-shadow(0 6px 10px rgba(121,134,224,0.4));
+  }
+
+  .deal-card-float {
+    position: absolute;
+    top: 6%;
+    left: 18%;
+    width: 200px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  .deal-card-float img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+  }
+
+  .deal-card-float .discount-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--danger);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  .deal-card-float .info { padding: 10px 12px; }
+  .deal-card-float .info h4 { font-size: 14px; margin-bottom: 6px; }
+  .deal-card-float .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-gray);
+    margin-bottom: 8px;
+  }
+  .deal-card-float .meta span { display: flex; align-items: center; gap: 3px; }
+  .deal-card-float .view-btn {
+    display: block;
+    text-align: center;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px;
+    border-radius: 8px;
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-text h1 {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .hero-text h1 span { color: var(--primary); }
+
+  .hero-text p {
+    font-size: 15px;
+    color: var(--text-gray);
+    line-height: 1.9;
+    margin-bottom: 30px;
+    max-width: 480px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; }
+
+  .btn-solid {
+    background: var(--primary);
+    color: #fff;
+    padding: 15px 26px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-solid:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(121,134,224,0.3); }
+
+  .btn-outline {
+    background: #fff;
+    color: var(--text-dark);
+    padding: 15px 26px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-outline:hover { transform: scale(1.05); border-color: var(--primary); color: var(--primary); }
+
+  /* ---------------- Search bar ---------------- */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 12px 18px;
+    margin: 10px 40px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .search-bar .btn-solid { padding: 12px 30px; white-space: nowrap; }
+
+  .dropdown, .search-input, .location-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #444;
+    padding: 10px 6px;
+    white-space: nowrap;
+  }
+
+  .search-input {
+    flex: 1;
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    padding: 10px 16px;
+  }
+  .search-input input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+  }
+
+  .location-select { gap: 6px; font-weight: 700; color: var(--primary-dark); }
+
+  /* ---------------- Categories ---------------- */
+  .categories {
+    display: flex;
+    gap: 16px;
+    padding: 0 40px 40px;
+    overflow-x: auto;
+  }
+
+  .cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 70px;
+    cursor: pointer;
+  }
+
+  .cat-item .cat-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--primary-dark);
+    transition: transform 0.2s ease;
+  }
+
+  .cat-item.active .cat-circle {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .cat-item:hover .cat-circle { transform: translateY(-3px); }
+
+  .cat-item span { font-size: 12px; color: #444; font-weight: 500; }
+
+  /* ---------------- Main content: deals + map ---------------- */
+  .main-content {
+    display: flex;
+    gap: 30px;
+    padding: 0 40px 60px;
+    align-items: flex-start;
+  }
+
+  .deals-col { flex: 1; min-width: 0; }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .section-head h2 { font-size: 20px; font-weight: 800; }
+
+  .view-all {
+    font-size: 13px;
+    color: var(--primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .deal-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .deal-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-3px); }
+
+  .deal-card .thumb {
+    position: relative;
+    height: 130px;
+  }
+  .deal-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+  .deal-card .discount-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--danger);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+  }
+
+  .fav-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #444;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  }
+
+  .rating-chip {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .deal-card .body { padding: 14px; }
+
+  .deal-card .distance {
+    font-size: 11px;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+
+  .deal-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .deal-card .category { font-size: 12px; color: var(--text-gray); margin-bottom: 8px; }
+  .deal-card .discount-text { font-size: 12px; color: #444; margin-bottom: 6px; }
+
+  .expiry {
+    font-size: 11px;
+    color: var(--danger);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .details-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .details-btn:hover { background: var(--primary); color: #fff; transform: scale(1.03); }
+
+  /* ---------------- Map section ---------------- */
+  .map-col {
+    width: 390px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .map-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .map-head h3 { font-size: 15px; font-weight: 800; }
+
+  .map-wrap { position: relative; height: 380px; }
+  .map-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  .map-popup {
+    position: absolute;
+    top: 40%;
+    right: 15%;
+    width: 140px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+  .map-popup img { width: 100%; height: 70px; object-fit: cover; }
+  .map-popup .info { padding: 8px 10px; }
+  .map-popup h4 { font-size: 12px; margin-bottom: 4px; }
+  .map-popup .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-gray);
+    margin-bottom: 6px;
+  }
+  .map-popup .view-btn {
+    display: block;
+    text-align: center;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 6px;
+  }
+
+  .map-pin {
+    position: absolute;
+    font-size: 24px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+  }
+
+  /* ---------------- Features strip ---------------- */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--primary-light);
+    margin: 0 40px 60px;
+    padding: 30px 40px;
+    border-radius: 20px;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: right;
+  }
+
+  .feature .f-icon {
+    width: 54px;
+    height: 54px;
+    background: #fff;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .feature h4 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .feature p { font-size: 12px; color: var(--text-gray); max-width: 200px; }
+
+  /* ---------------- Footer ---------------- */
+  footer { background: #f8f9fc; padding-top: 50px; }
+
+  .newsletter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px 40px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .newsletter h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+  .newsletter p { font-size: 13px; color: var(--text-gray); }
+
+  .newsletter-form {
+    display: flex;
+    gap: 10px;
+  }
+  .newsletter-form input {
+    padding: 12px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    width: 260px;
+  }
+  .newsletter-form input:focus { border-color: var(--primary); }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+    gap: 30px;
+    padding: 40px;
+  }
+
+  .footer-col h4 { font-size: 14px; font-weight: 800; margin-bottom: 16px; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { font-size: 13px; color: var(--text-gray); }
+  .footer-col ul li a:hover { color: var(--primary); }
+
+  .footer-brand { display: flex; align-items: center; gap: 6px; font-size: 18px; font-weight: 900; margin-bottom: 10px; }
+  .footer-brand i { color: var(--primary); }
+  .footer-col p.tag { font-size: 13px; color: var(--text-gray); margin-bottom: 20px; }
+
+  .social-icons { display: flex; gap: 10px; margin-bottom: 20px; }
+  .social-icons a {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #444;
+    transition: all 0.2s ease;
+  }
+  .social-icons a:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  .store-badges { display: flex; gap: 10px; }
+  .store-badges img { height: 40px; border-radius: 8px; }
+
+  .copyright {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-gray);
+    padding: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 1100px) {
+    .main-content { flex-direction: column; }
+    .map-col { width: 100%; }
+    .deals-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    header, .hero, .search-bar, .categories, .main-content, .features, .newsletter, .footer-grid { padding-left: 20px; padding-right: 20px; }
+    nav { display: none; }
+    .hero { flex-direction: column; }
+    .search-bar { flex-wrap: wrap; }
+    .deals-grid { grid-template-columns: 1fr; }
+    .features { flex-direction: column; gap: 24px; margin: 0 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= Header ================= -->
+<header>
+  <div class="header-right">
+    <div id="guest-area">
+      <a href="login2.html" class="login-btn">تسجيل الدخول</a>
+    </div>
+    <div id="user-area" class="user-chip" style="display:none;">
+      <i class='bx bxs-user-circle'></i>
+      <span id="greeting">مرحباً</span>
+      <i class='bx bx-log-out logout-icon' onclick="logout()" title="تسجيل الخروج"></i>
+    </div>
+    <div class="lang-select">
+      <i class='bx bx-globe'></i>
+      <span>العربية</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+    <div class="icon-btn">
+      <i class='bx bx-heart'></i>
+      <span class="badge">3</span>
+    </div>
+    <div class="icon-btn">
+      <i class='bx bx-shopping-bag'></i>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#" class="active">الرئيسية</a></li>
+      <li><a href="#">العروض</a></li>
+      <li><a href="#">المتاجر</a></li>
+      <li><a href="#">التصنيفات</a></li>
+      <li><a href="#">حولنا</a></li>
+      <li><a href="#">اتصل بنا</a></li>
+    </ul>
+  </nav>
+
+  <div class="logo">
+    <span>Offres</span>
+    <i class='bx bxs-map'></i>
+  </div>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>اكتشف أفضل العروض <span>القريبة</span> منك</h1>
+    <p>عروض حصرية وتخفيضات من المطاعم والمحلات التجارية حسب موقعك الجغرافي وبأفضل الأسعار</p>
+    <div class="hero-actions">
+      <button class="btn-solid"><i class='bx bx-current-location'></i> استخدم موقعي الحالي</button>
+      <button class="btn-outline"><i class='bx bx-left-arrow-alt'></i> استكشف العروض</button>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img src="images/hero-map-illustration.png" alt="خريطة توضيحية" class="map-img">
+    <i class='bx bxs-map-pin pin-icon'></i>
+
+    <div class="deal-card-float">
+      <div style="position:relative;">
+        <img src="images/deal-burger-house.jpg" alt="Burger House">
+        <span class="discount-badge">خصم 40%</span>
+      </div>
+      <div class="info">
+        <h4> McDonalds </h4>
+        <div class="meta">
+          <span><i class='bx bx-map'></i> 1.2 كم</span>
+          <span><i class='bx bxs-star' style="color:#f5a623;"></i> 4.8</span>
+        </div>
+        <a href="#" class="view-btn">عرض العرض</a>
+      </div>
+    </div>
+
+    <div class="floating-icon fi-tag"><i class='bx bx-purchase-tag-alt'></i></div>
+    <div class="floating-icon fi-cutlery"><i class='bx bx-restaurant'></i></div>
+    <div class="floating-icon fi-coffee"><i class='bx bx-coffee'></i></div>
+    <div class="floating-icon fi-bag"><i class='bx bx-shopping-bag'></i></div>
+  </div>
+</section>
+
+<!-- ================= Search bar ================= -->
+<div class="search-bar">
+  <button class="btn-solid"><i class='bx bx-search'></i> بحث</button>
+
+  <div class="dropdown">نسبة الخصم <i class='bx bx-chevron-down'></i></div>
+  <div class="dropdown">المسافة <i class='bx bx-chevron-down'></i></div>
+  <div class="dropdown">التصنيف <i class='bx bx-chevron-down'></i></div>
+
+  <div class="search-input">
+    <input type="text" placeholder="ماذا تبحث؟">
+    <i class='bx bx-search'></i>
+  </div>
+
+  <div class="location-select">
+    <i class='bx bx-current-location'></i>
+    الرياض
+    <i class='bx bx-chevron-down'></i>
+  </div>
+</div>
+
+<!-- ================= Categories ================= -->
+<div class="categories">
+  <div class="cat-item active">
+    <div class="cat-circle"><i class='bx bx-grid-alt'></i></div>
+    <span>الكل</span>
+  </div>
+ <a href="restaurants.html" class="cat-item" style="text-decoration:none;">
+  <div class="cat-circle"><i class='bx bx-restaurant'></i></div>
+  <span>مطاعم</span>
+</a>
+  <a href="coffee.html" class="cat-item" style="text-decoration:none;">
+  <div class="cat-circle"><i class='bx bx-coffee'></i></div>
+  <span>قهوة</span>
+</a>
+  <div class="cat-item">
+    <div class="cat-circle"><i class='bx bx-cart-alt'></i></div>
+    <span>سوبرماركت</span>
+  </div>
+  <div class="cat-item">
+    <div class="cat-circle"><i class='bx bx-brush-alt'></i></div>
+    <span>تجميل</span>
+  </div>
+  <div class="cat-item">
+    <div class="cat-circle"><i class='bx bx-headphone'></i></div>
+    <span>إلكترونيات</span>
+  </div>
+  <div class="cat-item">
+    <div class="cat-circle"><i class='bx bx-dumbbell'></i></div>
+    <span>رياضة</span>
+  </div>
+  <div class="cat-item">
+    <div class="cat-circle"><i class='bx bx-car'></i></div>
+    <span>سيارات</span>
+  </div>
+  <div class="cat-item">
+    <div class="cat-circle"><i class='bx bx-dots-horizontal-rounded'></i></div>
+    <span>أخرى</span>
+  </div>
+</div>
+
+<!-- ================= Deals + Map ================= -->
+<div class="main-content">
+
+  <div class="deals-col">
+    <div class="section-head">
+      <a href="#" class="view-all"><i class='bx bx-left-arrow-alt'></i> عرض الكل</a>
+      <h2>الأقرب إليك</h2>
+    </div>
+
+    <div class="deals-grid">
+
+      <div class="deal-card">
+        <div class="thumb">
+          <img src="images/deal-burger-house.jpg" alt="McDonalds ">
+          <span class="discount-badge">خصم 40%</span>
+          <div class="fav-btn"><i class='bx bx-heart'></i></div>
+          <div class="rating-chip"><i class='bx bxs-star' style="color:#f5a623;"></i> 4.2</div>
+        </div>
+        <div class="body">
+          <div class="distance"><i class='bx bx-map'></i> 1.2 كم</div>
+          <h3>  McDonalds </h3>
+          <div class="category">مطاعم</div>
+          <div class="discount-text">خصم على جميع الوجبات</div>
+          <div class="expiry"><i class='bx bx-time-five'></i> ينتهي خلال يومين</div>
+          <button class="details-btn">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="thumb">
+          <img src="images/deal-coffee-time.jpg" alt="M DEE">
+          <span class="discount-badge">خصم 30%</span>
+          <div class="fav-btn"><i class='bx bx-heart'></i></div>
+          <div class="rating-chip"><i class='bx bxs-star' style="color:#f5a623;"></i> 4.8</div>
+        </div>
+        <div class="body">
+          <div class="distance"><i class='bx bx-map'></i> 0.8 كم</div>
+          <h3> M DEE</h3>
+          <div class="category">قهوة</div>
+          <div class="discount-text">خصم على جميع المشروبات</div>
+          <div class="expiry"><i class='bx bx-time-five'></i> ينتهي خلال 3 أيام</div>
+          <button class="details-btn">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="thumb">
+          <img src="images/deal-style-shop.jpg" alt=" Zara">
+          <span class="discount-badge">خصم 25%</span>
+          <div class="fav-btn"><i class='bx bx-heart'></i></div>
+          <div class="rating-chip"><i class='bx bxs-star' style="color:#f5a623;"></i> 4.7</div>
+        </div>
+        <div class="body">
+          <div class="distance"><i class='bx bx-map'></i> 1.5 كم</div>
+          <h3> Zara</h3>
+          <div class="category">ملابس</div>
+          <div class="discount-text">خصم على جميع المنتجات</div>
+          <div class="expiry"><i class='bx bx-time-five'></i> ينتهي خلال 4 أيام</div>
+          <button class="details-btn">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="thumb">
+          <img src="images/deal-tech-store.jpg" alt="Extra">
+          <span class="discount-badge">خصم 20%</span>
+          <div class="fav-btn"><i class='bx bx-heart'></i></div>
+          <div class="rating-chip"><i class='bx bxs-star' style="color:#f5a623;"></i> 4.5</div>
+        </div>
+        <div class="body">
+          <div class="distance"><i class='bx bx-map'></i> 2.3 كم</div>
+          <h3>Extra</h3>
+          <div class="category">إلكترونيات</div>
+          <div class="discount-text">خصم على جميع الإلكترونيات</div>
+          <div class="expiry"><i class='bx bx-time-five'></i> ينتهي خلال 5 أيام</div>
+          <button class="details-btn">عرض التفاصيل</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="map-col">
+    <div class="map-head">
+      <a href="#" class="view-all">عرض الكل</a>
+      <h3>العروض على الخريطة</h3>
+    </div>
+    <div class="map-wrap">
+      <img src="images/hero-map-illustration.png" alt="خريطة الرياض">
+
+      <i class='bx bxs-map-pin map-pin' style="top:20%; right:30%; color:#f5a623;"></i>
+      <i class='bx bxs-map-pin map-pin' style="top:78%; right:8%; color:#9b59b6;"></i>
+      <i class='bx bxs-map-pin map-pin' style="top:38%; right:65%; color:#e0475a;"></i>
+      <i class='bx bxs-map-pin map-pin' style="top:58%; right:55%; color:#2fa86b;"></i>
+      <i class='bx bxs-map-pin map-pin' style="top:68%; right:75%; color:#2fa86b;"></i>
+      <i class='bx bxs-map-pin map-pin' style="top:48%; right:22%; color:var(--primary);"></i>
+
+      <div class="map-popup">
+        <img src="images/deal-burger-house.jpg" alt=" McDonalds">
+        <div class="info">
+          <h4> McDonalds</h4>
+          <div class="meta">
+            <span>خصم 40%</span>
+            <span><i class='bx bxs-star' style="color:#f5a623;"></i> 4.2</span>
+          </div>
+          <a href="#" class="view-btn">عرض العرض</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= Features strip ================= -->
+<div class="features">
+  <div class="feature">
+    <div class="f-icon"><i class='bx bx-store-alt'></i></div>
+    <div>
+      <h4>مئات المتاجر</h4>
+      <p>آلاف المتاجر والمطاعم المشتركة معنا</p>
+    </div>
+  </div>
+  <div class="feature">
+    <div class="f-icon"><i class='bx bx-refresh'></i></div>
+    <div>
+      <h4>تحديث مستمر</h4>
+      <p>عروض جديدة يومياً وتحديث لحظي</p>
+    </div>
+  </div>
+  <div class="feature">
+    <div class="f-icon"><i class='bx bx-target-lock'></i></div>
+    <div>
+      <h4>العروض الأقرب لك</h4>
+      <p>تظهر لك العروض حسب موقعك ويترتب الأقرب أولاً</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Footer ================= -->
+<footer>
+  <div class="newsletter">
+    <div>
+      <h3>اشترك في نشرتنا</h3>
+      <p>احصل على أفضل العروض والتخفيضات مباشرة في بريدك الإلكتروني</p>
+    </div>
+    <div class="newsletter-form">
+      <button class="btn-solid">اشتراك</button>
+      <input type="email" placeholder="البريد الإلكتروني">
+    </div>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand"><span>Offres</span><i class='bx bxs-map'></i></div>
+      <p class="tag">اكتشف العروض القريبة منك</p>
+      <p class="tag" style="margin-top:-14px;">منصة متخصصة في عرض أفضل العروض والتخفيضات من المطاعم والمتاجر القريبة منك ووفر لك الوقت والجهد للوصول لأفضل الأسعار</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#">العروض</a></li>
+        <li><a href="#">التصنيفات</a></li>
+        <li><a href="#">المتاجر</a></li>
+        <li><a href="#">حولنا</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>الدعم والمساعدة</h4>
+      <ul>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">سياسة الخصوصية</a></li>
+        <li><a href="#">شروط الاستخدام</a></li>
+        <li><a href="#">تواصل معنا</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Offres</h4>
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-tiktok'></i></a>
+        <a href="#"><i class='bx bxl-snapchat'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+      </div>
+      <div class="store-badges">
+        <img src="images/google-play-badge.png" alt="Get it on Google Play">
+        <img src="images/app-store-badge.png" alt="Download on the App Store">
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">© 2026 offer جميع الحقوق محفوظة</div>
+</footer>
+
+<script>
+  const user = localStorage.getItem('currentUser');
+  if (user) {
+    document.getElementById('guest-area').style.display = 'none';
+    document.getElementById('user-area').style.display = 'flex';
+    document.getElementById('greeting').textContent = 'مرحباً، ' + user;
+  }
+
+  function logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentEmail');
+    window.location.href = 'login2.html';
+  }
+</script>
+
+</body>
+</html>

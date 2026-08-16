@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #dfe3fb, #c9cff5);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  .card {
+    position: relative;
+    width: 820px;
+    min-height: 520px;
+    background: #fff;
+    border-radius: 30px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(60,70,150,0.2);
+  }
+
+  .side {
+    position: relative;
+    width: 45%;
+    background: #7986e0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    border-radius: 0 400px 400px 0;
+    z-index: 2;
+  }
+
+  .side h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+
+  .side p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 25px;
+  }
+
+  .ghost-btn {
+    padding: 12px 34px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    background: transparent;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .ghost-btn:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.15);
+  }
+
+  .form-side {
+    flex: 1;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-side h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1e1e2d;
+    margin-bottom: 30px;
+  }
+
+  .field {
+    position: relative;
+    margin-bottom: 18px;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 15px 45px 15px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #eceef4;
+    font-size: 14px;
+    outline: none;
+    color: #333;
+  }
+
+  .field input:focus {
+    box-shadow: 0 0 0 2px #7986e0;
+  }
+
+  .field i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #555;
+  }
+
+  .forgot {
+    text-align: center;
+    font-size: 13px;
+    color: #444;
+    text-decoration: none;
+    display: block;
+    margin: 6px 0 20px;
+  }
+
+  .forgot:hover { text-decoration: underline; }
+
+  .btn-main {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #7986e0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(121,134,224,0.35);
+  }
+
+  .social-text {
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 16px;
+  }
+
+  .social-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .social-row a {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #e0e0e6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .social-row a:hover {
+    transform: translateY(-3px);
+    border-color: #7986e0;
+    color: #7986e0;
+  }
+
+  @media (max-width: 700px) {
+    .card { flex-direction: column; width: 90%; }
+    .side { width: 100%; border-radius: 0 0 60px 60px; padding: 30px; }
+    .form-side { padding: 40px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="side">
+    <h1>Hello, Welcome!</h1>
+    <p>Don't have an Account?</p>
+    <a href="register2.html" class="ghost-btn">Register</a>
+  </div>
+
+  <div class="form-side">
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="handleLogin(event);">
+      <div class="field">
+        <input type="text" id="username" placeholder="Username" required>
+        <i class='bx bx-user'></i>
+      </div>
+      <div class="field">
+        <input type="password" id="password" placeholder="Password" required>
+        <i class='bx bx-lock-alt'></i>
+      </div>
+      <a href="#" class="forgot">Forget Password?</a>
+      <button type="submit" class="btn-main">Login</button>
+    </form>
+
+    <div class="social-text">Or login with social platforms</div>
+    <div class="social-row">
+      <a href="#"><i class='bx bxl-google'></i></a>
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-github'></i></a>
+      <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleLogin(e) {
+    e.preventDefault();
+    try {
+      const username = document.getElementById('username').value;
+      // هنا لاحقاً تربط مع السيرفر/الداتابيس للتحقق من البيانات
+      localStorage.setItem('currentUser', username);
+    } catch (err) {
+      console.warn('تعذر حفظ البيانات محلياً:', err);
+    }finally{
+      window.location.href = 'home.html';
+    }
+  }
+</script>
+</body>
+</html>

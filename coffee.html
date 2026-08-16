@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offres - قهوة</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #7986e0;
+    --primary-dark: #5f6ed1;
+    --primary-light: #eceefa;
+    --text-dark: #1e1e2d;
+    --text-gray: #6b7280;
+    --border: #e5e7eb;
+    --danger: #e0475a;
+    --green: #2fa86b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    color: var(--text-dark);
+    background: #f8f9fc;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 720px; margin: 0 auto; background: #fff; min-height: 100vh; }
+
+  /* ---------------- Header ---------------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+  }
+
+  .back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--primary-dark);
+    border: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .back-btn:hover { transform: scale(1.1); background: var(--primary); color: #fff; }
+
+  header h1 { font-size: 18px; font-weight: 800; }
+
+  .header-icons { display: flex; gap: 14px; font-size: 20px; color: #444; }
+
+  /* ---------------- Filter chips ---------------- */
+  .filters {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+    white-space: nowrap;
+    background: #fff;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .chip:hover { transform: scale(1.05); border-color: var(--primary); color: var(--primary-dark); }
+  .chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+  /* ---------------- Restaurant list ---------------- */
+  .list { padding: 10px 20px; }
+
+  .r-card {
+    display: flex;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .r-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--primary-light);
+  }
+  .r-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .r-info { flex: 1; min-width: 0; }
+
+  .r-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .r-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .badge-new {
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .fav-icon { font-size: 20px; color: #ccc; transition: color 0.2s ease, transform 0.2s ease; }
+  .fav-icon:hover { color: var(--danger); transform: scale(1.15); }
+
+  .r-tags { font-size: 12px; color: var(--text-gray); margin: 4px 0 8px; }
+
+  .r-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+
+  .fee-chip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 8px;
+  }
+
+  /* the red offer badge — uses Boxicons, grows when clicked */
+  .offer-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #fdeaec;
+    color: var(--danger);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .offer-badge i { font-size: 13px; }
+  .offer-badge:hover { transform: scale(1.08); }
+  .offer-badge.active {
+    transform: scale(1.15);
+    background: var(--danger);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(224,71,90,0.35);
+  }
+
+  .r-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--text-gray);
+  }
+  .r-meta span { display: flex; align-items: center; gap: 3px; }
+  .r-meta .price { color: #444; font-weight: 700; }
+  .r-meta .free-tag { color: var(--primary-dark); font-weight: 700; }
+
+  @media (max-width: 500px) {
+    header, .filters, .list { padding-left: 14px; padding-right: 14px; }
+    .r-logo { width: 60px; height: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ================= Header ================= -->
+  <header>
+    <button class="back-btn" onclick="window.location.href='home.html';" title="رجوع للرئيسية">
+      <i class='bx bx-arrow-back'></i>
+    </button>
+    <h1>قهوة</h1>
+    <div class="header-icons">
+      <i class='bx bx-search'></i>
+      <i class='bx bx-shopping-bag'></i>
+    </div>
+  </header>
+
+  <!-- ================= Filters ================= -->
+  <div class="filters">
+    <div class="chip active"><i class='bx bx-slider-alt'></i> الكل</div>
+    <div class="chip"><i class='bx bx-purchase-tag'></i> عروض</div>
+    <div class="chip"><i class='bx bxs-star'></i> الأعلى تقييم</div>
+    <div class="chip"><i class='bx bx-run'></i> توصيل سريع</div>
+  </div>
+
+  <!-- ================= Restaurant list ================= -->
+  <div class="list" id="restaurant-list">
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restauran-m.jpg" alt="M DEE"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name">M DEE <span class="badge-new"><i class='bx bxs-star'></i> جديد</span></div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags"  >قهوة مختصة , حلا  </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 3 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 42%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$</span>
+          <span><i class='bx bx-time-five'></i> 15-30 دقيقة</span>
+          <span><i class='bx bx-map'></i> 1.8 كم</span>
+          <span class="free-tag">مجاني مع H+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaur-last-harb.jpg" alt="Jadeel"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name"> Jadeel <span class="badge-new"><i class='bx bxs-star'></i> جديد</span></div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">  حلا  قهوة    </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 5 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 22%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$</span>
+          <span><i class='bx bx-time-five'></i> 30-45 دقيقة</span>
+          <span><i class='bx bx-map'></i> 2.3 كم</span>
+          <span class="free-tag">مجاني مع H+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaurant-f-cup.jpg" alt="Dunkin"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name"> Dunkin <span class="badge-new"><i class='bx bxs-star'></i> جديد</span></div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">حلا . مخبوزات  قهوة </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 7 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم حتى 35 ريال</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$</span>
+          <span><i class='bx bx-time-five'></i> 10-35 دقيقة</span>
+          <span><i class='bx bx-map'></i> 5.0 كم</span>
+          <span class="free-tag">مجاني مع H+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaurant-liver-a-pie.jpg" alt="Teller "></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name"> Teller  <span class="badge-new"><i class='bx bxs-star'></i> جديد</span></div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags"> حلا  قهوة </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 7 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم حتى 35 ريال</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$</span>
+          <span><i class='bx bx-time-five'></i> 10-15 دقيقة</span>
+          <span><i class='bx bx-map'></i> 0.3 كم</span>
+          <span class="free-tag">مجاني مع H+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaurant-ad.jpg" alt="Breehant"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name">Breehaant <span class="badge-new"><i class='bx bxs-star'></i> جديد</span></div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags"> قهوة مختصة , محمصة</div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 4 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم حتى 19 ريال</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$$</span>
+          <span><i class='bx bx-time-five'></i> 25-30 دقيقة</span>
+          <span><i class='bx bx-map'></i> 2.1 كم</span>
+          <span class="free-tag">مجاني مع H+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaurt-style-shop.jpg" alt="ERA"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name"> ERA </div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">حلا . مخبوزات  قهوة</div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 1 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 32%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$$</span>
+          <span><i class='bx bx-time-five'></i> 20-40 دقيقة</span>
+          <span><i class='bx bx-map'></i> 8.0 كم</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/staurant-tech-store.jpg" alt="Tim Hortons"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name">Tim Hortons</div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">حلا  قهوة </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 5 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 15%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$</span>
+          <span><i class='bx bx-time-five'></i> 15-30 دقيقة</span>
+          <span><i class='bx bx-map'></i> 3.4 كم</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaurant-sushi-r.jpg" alt="Coffe Addres"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name">Coffee Addres <span class="badge-new"><i class='bx bxs-star'></i> جديد</span></div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">  قهوة متخصصة</div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 8 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 18%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$$</span>
+          <span><i class='bx bx-time-five'></i> 25-40 دقيقة</span>
+          <span><i class='bx bx-map'></i> 6.2 كم</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/raurant-bar-lab.jpg" alt="Archi  "></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name"> Archi  </div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">  قهوة  </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 9 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 10%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$$</span>
+          <span><i class='bx bx-time-five'></i> 20-30 دقيقة</span>
+          <span><i class='bx bx-map'></i> 1.8 كم</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="r-logo"><img src="images/restaurant--station.jpg" alt="MLT"></div>
+      <div class="r-info">
+        <div class="r-top">
+          <div class="r-name">MLT</div>
+          <i class='bx bx-heart fav-icon'></i>
+        </div>
+        <div class="r-tags">حلا , قهوة    </div>
+        <div class="r-badges">
+          <span class="fee-chip"><i class='bx bx-bike'></i> 4 ريال رسوم توصيل</span>
+          <button class="offer-badge"><i class='bx bxs-offer'></i> خصم يصل إلى 50%</button>
+        </div>
+        <div class="r-meta">
+          <span class="price">$</span>
+          <span><i class='bx bx-time-five'></i> 10-20 دقيقة</span>
+          <span><i class='bx bx-map'></i> 0.7 كم</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // كل زر خصم أحمر يكبر شوي لما تضغط عليه
+  document.querySelectorAll('.offer-badge').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.classList.toggle('active');
+    });
+  });
+
+</script>
+
+</body>
+</html>
